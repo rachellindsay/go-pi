@@ -4,6 +4,7 @@ import (
 	// the JSON encoding library will be used to process inbound data and format outbound JSON outputs
 	"encoding/json"
 	"os"
+
 	// the fmt standard library formats string output
 	"fmt"
 	// the HTTP library is used to manage our HTTP server connection
@@ -43,6 +44,7 @@ func getdate(write http.ResponseWriter, _ *http.Request) {
 
 // initialize the HTTP server, set the port number, and declare the relative paths that will be used to call the respective hompage and getdate functions.
 func main() {
+	fmt.Println("Hello from main.go: main")
 	http.HandleFunc("/", homepage)
 	http.HandleFunc("/api/v1/getdate", getdate)
 	err := http.ListenAndServe(":4000", nil)
@@ -50,6 +52,7 @@ func main() {
 		fmt.Println("Failed to start server:", err)
 		os.Exit(1)
 	}
+	fmt.Println("main() after the ListenAndServe")
 
 }
 
