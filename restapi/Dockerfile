@@ -2,7 +2,7 @@ FROM docker.io/golang:1.23 AS builder
 RUN mkdir /app
 WORKDIR /app
 COPY . /app
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -ldflags=" -s -w"
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w"
 
 
 FROM docker.io/alpine:latest
